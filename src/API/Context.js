@@ -24,6 +24,7 @@ const Context = ({children}) => {
       setIndex(1);
     } catch (error) {
       console.log(error);
+      alert(error);
     }
   };
 
