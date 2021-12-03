@@ -1,12 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import {View, Text, StyleSheet, StatusBar} from 'react-native';
-import Context from './src/API/Context';
+import Context, {NewsContext} from './src/API/Context';
 import NewsTabs from './src/components/NewsTabs';
 
 function App() {
+  const {darkTheme} = useContext(NewsContext);
   return (
-    <View style={{...styles.container, backgroundColor: '#282C35'}}>
+    <View
+      style={{
+        ...styles.container,
+        backgroundColor: darkTheme ? '#282C35' : 'white',
+      }}>
       <NewsTabs />
     </View>
   );
