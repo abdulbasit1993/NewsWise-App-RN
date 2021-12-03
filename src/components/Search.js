@@ -5,8 +5,11 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Modal,
 } from 'react-native';
 import {NewsContext} from '../API/Context';
+import Entypo from 'react-native-vector-icons/Entypo';
+import SingleNews from './SingleNews';
 
 const Search = () => {
   const {
@@ -48,8 +51,7 @@ const Search = () => {
           <TouchableOpacity
             key={n.title}
             activeOpacity={0.7}
-            //   onPress={() => handleModal(n)}
-          >
+            onPress={() => handleModal(n)}>
             <Text
               style={{
                 ...styles.singleResult,
@@ -61,6 +63,29 @@ const Search = () => {
           </TouchableOpacity>
         ))}
       </View>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}>
+        <TouchableOpacity
+          onPress={() => setModalVisible(!modalVisible)}
+          style={{
+            position: 'absolute',
+            zIndex: 2,
+            right: 0,
+            margin: 10,
+            marginTop: 60,
+          }}>
+          <Entypo name="circle-with-cross" size={30} color="white" />
+        </TouchableOpacity>
+        <View style={{height: '100%', transform: [{scaleY: -1}]}}>
+          <SingleNews item={currentNews} />
+        </View>
+      </Modal>
     </View>
   );
 };
