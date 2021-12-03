@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "cd android && ./gradlew clean && react-native bundle --dev false --platform android --entry-file index.js --bundle-output ./app/src/main/assets/index.android.bundle --assets-dest ./app/src/main/res && ./gradlew assembleDebug"
   },
   "dependencies": {
     "axios": "^0.24.0",
