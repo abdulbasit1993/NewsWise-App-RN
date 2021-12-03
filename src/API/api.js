@@ -91,5 +91,5 @@ export const getNewsAPI = (category, country = 'us') => {
 };
 
 export const getSourceAPI = source => {
-  return `${BASE_URL}/everything?sources=${source}`;
+  return `${BASE_URL}/everything?sources=${source}&apikey=${API_KEY}`;
 };
